@@ -2,9 +2,15 @@
  * Project 4 - OOP Game App
  * app.js */
 
+ let game = null;
+
  /**
   * Clicking the "Start Game" button creates a new Game object and starts the game
   */
+ document.getElementById('btn__reset').addEventListener('click', () => {
+    game = new Game();
+    game.startGame();
+ });
 
   /**
    * Clicking an onscreen keyboard button results in a call to the handleInteraction() method for the clicked keyboard button

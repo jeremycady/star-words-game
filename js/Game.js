@@ -5,24 +5,38 @@
  class Game {
      constructor(){
         this.missed = 0;
-        this.phrases = [];
+        this.phrases = [
+            { phrase: 'I find your lack of faith disturbing'},
+            { phrase: 'Never tell me the odds'},
+            { phrase: 'There is no try'},
+            { phrase: 'Pass on what you have learned'},
+            { phrase: 'There is always a bigger fish'},
+            { phrase: 'Unlimited power'},
+            { phrase: 'So this is how liberty dies'},
+            { phrase: 'I am one with the Force'}
+        ];
         this.activePhrase = null;
      }
 
      /**
-      * hides the start screen overlay
-      * sets the activePhrase property to a random phrase
-      * and calls the addPhraseToDisplay() method on the active phrase
+      * start the game
       */
      startGame() {
+        // hides the start screen
+        document.getElementById('overlay').style.display = 'none';
 
+        // select random phrase and display it
+        this.activePhrase = this.getRandomPhrase();
+        const phrase = new Phrase(this.activePhrase);
+        phrase.addPhraseToDisplay();
      }
 
      /**
       * randomly retrieves one phrase from the phrases array
+      * @return {object} a phrase object
       */
      getRandomPhrase() {
-         
+        return this.phrases[Math.floor(Math.random() * this.phrases.length)];
      }
 
      /**
