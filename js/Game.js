@@ -39,7 +39,7 @@
      }
 
      /**
-      * If the phrase includes the guessed letter, the chosen CSS class is added to the selected letter's keyboard button, the showMatchedLetter() method is called on the phrase, and the checkForWin() method is called. If the player has won the game, the gameOver() method is called
+      * handles the interactions with the keyboard
       * @param {object} target = the event target from event listener
       */
      handleInteraction(target) {
@@ -60,7 +60,11 @@
       * checks if the player has revealed all of the letters in the active phrase
       */
      checkForWin() {
+        const hiddenLetters = document.querySelectorAll('.hide');
 
+        if (hiddenLetters.length === 0) {
+            this.gameOver('You have brought balance to the force!');
+        }
      }
 
      /**
@@ -82,9 +86,10 @@
 
      /**
       * displays a final "win" or "loss" message by showing the original start screen overlay styled with either the win or lose CSS class
+      * @param {string} message = message to display on game over
       */
-     gameOver() {
-
+     gameOver(message) {
+        console.log(message);
      }
 
      /**
