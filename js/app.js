@@ -15,6 +15,9 @@
   /**
    * Clicking an onscreen keyboard button results in a call to the handleInteraction() method for the clicked keyboard button
    */
+  document.getElementById('qwerty').addEventListener('click', e => {
+    game.handleInteraction(event.target);
+  });
 
    /**
     * Clicking the spaces between and around the onscreen keyboard buttons does not result in the handleInteraction() method being called

@@ -26,9 +26,8 @@
         document.getElementById('overlay').style.display = 'none';
 
         // select random phrase and display it
-        this.activePhrase = this.getRandomPhrase();
-        const phrase = new Phrase(this.activePhrase);
-        phrase.addPhraseToDisplay();
+        this.activePhrase = new Phrase(this.getRandomPhrase());
+        this.activePhrase.addPhraseToDisplay();
      }
 
      /**
@@ -40,12 +39,21 @@
      }
 
      /**
-      * Disables the selected letter's onscreen keyboard button
       * If the phrase does not include the guessed letter, the wrong CSS class is added to the selected letter's keyboard button and the removeLife() method is called 
       * If the phrase includes the guessed letter, the chosen CSS class is added to the selected letter's keyboard button, the showMatchedLetter() method is called on the phrase, and the checkForWin() method is called. If the player has won the game, the gameOver() method is called
+      * @param {object} target = the event target from event listener
       */
-     handleInteraction() {
+     handleInteraction(target) {
+        target.disabled = true;
 
+        if (this.activePhrase.checkLetter(target.textContent)) {
+            target.className += ' chosen';
+            this.activePhrase.showMatchedLetter(target);
+        } else {
+            target.className += ' wrong';
+            this.removeLife();
+        }
+        
      }
 
      /**
@@ -61,8 +69,12 @@
       * if the player has lost the game calls the gameOver() method
       */
      removeLife() {
+        const scoreboard = document.getElementById('scoreboard');
+        const ol = scoreboard.firstElementChild;
+        const life = ol.lastElementChild;
 
-     }
+        ol.removeChild(life);
+    }
 
      /**
       * displays a final "win" or "loss" message by showing the original start screen overlay styled with either the win or lose CSS class

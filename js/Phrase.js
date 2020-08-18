@@ -25,15 +25,29 @@
 
     /**
      * checks if a letter is in the phrase
+     * @param {string} letter = textContent of event target 
+     * @return {boolean}} returns true if match, returns false if no match
      */
-     checkLetter() {
-
+     checkLetter(letter) {
+        for (let i=0; i<this.phrase.phrase.length; i++) {
+            if (letter === this.phrase.phrase[i]) {
+                return true;
+            }
+        }
+        return false;
      }
 
      /**
       * reveals the letter(s) on the board that matches the player's selection
+      * @param {object} target = the event target
       */
-     showMatchedLetter() {
+     showMatchedLetter(target) {
+        const letters = document.querySelectorAll('.hide');
 
+        for (let letter of letters) {
+            if (letter.textContent === target.textContent) {
+                letter.className = `show letter ${target.textContent}`;
+            }
+        }
      }
  }
