@@ -10,10 +10,10 @@
             { phrase: 'Never tell me the odds'},
             { phrase: 'There is no try'},
             { phrase: 'Pass on what you have learned'},
-            { phrase: 'There is always a bigger fish'},
+            { phrase: "There's always a bigger fish"},
             { phrase: 'Unlimited power'},
             { phrase: 'So this is how liberty dies'},
-            { phrase: 'I am one with the Force'}
+            { phrase: "I'm one with the Force"}
         ];
         this.activePhrase = null;
      }
@@ -71,11 +71,9 @@
       * removes a life and ends game when lives run out
       */
      removeLife() {
-        const scoreboard = document.getElementById('scoreboard');
-        const ol = scoreboard.firstElementChild;
-        const life = ol.lastElementChild;
+        const lifes = document.querySelectorAll('.tries');
 
-        life.style.display = 'none';
+        lifes[this.missed].style.display = 'none';
 
         this.missed += 1;
 

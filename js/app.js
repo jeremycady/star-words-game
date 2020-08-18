@@ -16,7 +16,9 @@
    * Clicking an onscreen keyboard button results in a call to the handleInteraction() method for the clicked keyboard button
    */
   document.getElementById('qwerty').addEventListener('click', e => {
-    game.handleInteraction(event.target);
+    if (event.target.tagName === 'BUTTON') {
+        game.handleInteraction(event.target);
+    }
   });
 
    /**
