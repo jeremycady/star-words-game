@@ -30,7 +30,7 @@
      */
      checkLetter(letter) {
         for (let i=0; i<this.phrase.phrase.length; i++) {
-            if (letter === this.phrase.phrase[i]) {
+            if (letter.toLowerCase() === this.phrase.phrase[i].toLowerCase()) {
                 return true;
             }
         }
@@ -45,7 +45,7 @@
         const letters = document.querySelectorAll('.hide');
 
         for (let letter of letters) {
-            if (letter.textContent === target.textContent) {
+            if (letter.textContent.toLowerCase() === target.textContent.toLowerCase()) {
                 letter.className = `show letter ${target.textContent}`;
             }
         }
