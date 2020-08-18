@@ -63,7 +63,7 @@
         const hiddenLetters = document.querySelectorAll('.hide');
 
         if (hiddenLetters.length === 0) {
-            this.gameOver('You have brought balance to the force!');
+            this.gameOver('You have brought balance to the force!', true);
         }
      }
 
@@ -75,24 +75,63 @@
         const ol = scoreboard.firstElementChild;
         const life = ol.lastElementChild;
 
-        ol.removeChild(life);
+        life.style.display = 'none';
 
         this.missed += 1;
 
         if (this.missed === 5) {
-            this.gameOver('You have turned to the dark side!');
+            this.gameOver('You have turned to the dark side!', false);
         }
     }
 
      /**
-      * displays a final "win" or "loss" message by showing the original start screen overlay styled with either the win or lose CSS class
+      * ends game, displays game over message
       * @param {string} message = message to display on game over
+      * @param {boolean} didWin = true if won, false if lost
       */
-     gameOver(message) {
-        console.log(message);
+     gameOver(message, didWin) {
+        const overlay = document.getElementById('overlay');
+
+        overlay.style.display = 'block';
+        document.getElementById('game-over-message').textContent = message;
+
+        if (didWin) {
+            overlay.className = 'win';
+        } else {
+            overlay.className = 'lose';
+        }
+
+        this.reset();
+        
      }
 
      /**
-      * After a game is completed, the gameboard is reset so that clicking the "Start Game" button loads a new game
+      * resets the game
       */
+     reset() {
+        // reset Game properties
+        this.missed = 0;
+        this.activePhrase = null;
+
+        // reset phrase HTML
+        const div = document.getElementById('phrase');
+        const ul = div.firstElementChild;
+
+        ul.innerHTML = '';
+
+        // reset disabled keys
+        const keys = document.querySelectorAll('.key');
+
+        for (let key of keys) {
+            key.disabled = false;
+            key.className = 'key';
+        }
+
+        // reset hidden lives
+        const lives = document.querySelectorAll('.tries');
+
+        for (let life of lives) {
+            life.style.display = 'inline-block'
+        }
+     }
  }
