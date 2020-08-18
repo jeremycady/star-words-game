@@ -39,7 +39,6 @@
      }
 
      /**
-      * If the phrase does not include the guessed letter, the wrong CSS class is added to the selected letter's keyboard button and the removeLife() method is called 
       * If the phrase includes the guessed letter, the chosen CSS class is added to the selected letter's keyboard button, the showMatchedLetter() method is called on the phrase, and the checkForWin() method is called. If the player has won the game, the gameOver() method is called
       * @param {object} target = the event target from event listener
       */
@@ -49,6 +48,7 @@
         if (this.activePhrase.checkLetter(target.textContent)) {
             target.className += ' chosen';
             this.activePhrase.showMatchedLetter(target);
+            this.checkForWin();
         } else {
             target.className += ' wrong';
             this.removeLife();
@@ -64,9 +64,7 @@
      }
 
      /**
-      * removes a life from the scoreboard 
-      * increments the missed property
-      * if the player has lost the game calls the gameOver() method
+      * removes a life and ends game when lives run out
       */
      removeLife() {
         const scoreboard = document.getElementById('scoreboard');
@@ -74,6 +72,12 @@
         const life = ol.lastElementChild;
 
         ol.removeChild(life);
+
+        this.missed += 1;
+
+        if (this.missed === 5) {
+            this.gameOver('You have turned to the dark side!');
+        }
     }
 
      /**
