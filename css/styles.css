@@ -5,12 +5,12 @@
 
 :root {
   --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-lose: #b42525;
   --color-start: #5b85b7;
-  --color-neutral: #445069;
-  --color-neutral-light: #D2D2D2;
+  --color-neutral: #a2a23c;
+  --color-neutral-light: #ffe91d;
   --color-keys: #37474F;
-  --color-keys-light: #E5E5E5;
+  --color-keys-light: #ffe91d;
   --font-size-large: 60px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
@@ -28,6 +28,8 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background: url(../images/star_sky1.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 li, ol, ul {
@@ -111,7 +113,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #a2a23c;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,14 +133,14 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #a2a23c;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: #b42525;
   color: #FFFFFF;
 }
 
@@ -173,6 +175,7 @@ button {
   left: 0;
   right: 0;
   border-radius: 5px;
+  text-align: center;
 }
 
 .title {
@@ -181,6 +184,8 @@ button {
 
 .start {
   background-color: #3a3f58;
+  background: url(../images/star_sky1.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 .start a {
@@ -196,7 +201,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #b42525;
 }
 
 .lose a {
