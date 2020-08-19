@@ -13,21 +13,26 @@
  });
 
   /**
-   * Clicking an onscreen keyboard button results in a call to the handleInteraction() method for the clicked keyboard button
+   * onscreen keyboard calls to the handleInteraction() method
    */
   document.getElementById('qwerty').addEventListener('click', e => {
-    if (event.target.tagName === 'BUTTON') {
-        game.handleInteraction(event.target);
+    if (e.target.tagName === 'BUTTON') {
+        game.handleInteraction(e.target);
     }
   });
 
-   /**
-    * Clicking the spaces between and around the onscreen keyboard buttons does not result in the handleInteraction() method being called
-    */
+  /**
+   * Physical keyboard calls handleInteraction() method
+   */
+  document.addEventListener('keyup', e => {
+    const buttons = document.querySelectorAll('.key');
 
-    /**
-     * Event listener has been added for the keydown or keyup event so that pressing a physical keyboard button results in the handleInteraction() method being called for the associated onscreen keyboard button
-     */
+    for (let button of buttons) {
+      if (e.key === button.textContent) {
+        game.handleInteraction(button);
+      }
+    }
+  });
 
      /**
       * App styles have been personalized and changes have been noted in the README.md file and the project submission notes
