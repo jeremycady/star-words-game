@@ -28,7 +28,7 @@
     const buttons = document.querySelectorAll('.key');
 
     for (let button of buttons) {
-      if (e.key === button.textContent) {
+      if (e.key === button.textContent && !button.disabled) {
         game.handleInteraction(button);
       }
     }

@@ -73,7 +73,7 @@
      removeLife() {
         const lifes = document.querySelectorAll('.tries');
 
-        lifes[this.missed].style.display = 'none';
+        lifes[this.missed].innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">';
 
         this.missed += 1;
 
@@ -129,7 +129,7 @@
         const lives = document.querySelectorAll('.tries');
 
         for (let life of lives) {
-            life.style.display = 'inline-block'
+            life.innerHTML = '<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30">';
         }
      }
  }
